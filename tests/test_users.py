@@ -67,3 +67,27 @@ def test_get_missing_user_returns_404(client):
 
     assert response.status_code == 404
     assert response.json()["detail"] == "User not found"
+
+def test_delete_existing_user_returns_204(client):
+    client.post("/api/users", json=user_payload(uid = 2))
+
+    response = client.delete("api/users/2")
+
+    assert response.status_code == 204
+    assert response.content == b''
+
+def test_delete_missing_user_returns_404(client):
+    response = client.delete("api/users/451")
+    
+    assert response.status_code == 404
+    assert response.json()["detail"] == "User not found"
+
+def test_confirm_deleted_user_returns_404(client):
+    client.post("/api/users", json=user_payload(uid = 2))
+    response = client.delete("api/users/2")
+
+    response = client.get("api/users/2")
+
+    assert response.status_code == 404
+
+
