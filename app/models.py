@@ -1,7 +1,7 @@
-from sqlalchemy import Interger,  String
-from sqlalchemy.orm import DeclartiveBase, Mapped, mapped_column
+from sqlalchemy import Integer,  String
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
-class Base(DeclartiveBase):
+class Base(DeclarativeBase):
     pass
 
 class UserDB(Base):
@@ -12,7 +12,7 @@ class UserDB(Base):
     email: Mapped[str] = mapped_column(
         String(255), unique=True, index=True, nullable=False
     )
-    age: Mapped[int] = mapped_column(Interger, nullable=False)
+    age: Mapped[int] = mapped_column(Integer, nullable=False)
     student_id: Mapped[str] = mapped_column(
         String(8), unique=True, nullable=False
     )
