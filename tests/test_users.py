@@ -56,8 +56,8 @@ def test_get_existing_user_returns_200(client):
         json=user_payload(),
     ).json()
 
-    
-    response = client.get(f"api/users/{created["id"]}")
+    user_id = created["id"]
+    response = client.get(f"api/users/{user_id}")
 
     assert response.status_code == 200
     assert response.json()["name"] == "Jones"
