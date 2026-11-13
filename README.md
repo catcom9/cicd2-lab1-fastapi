@@ -5,34 +5,15 @@ Use this `README.md` as the standard structure for future labs.
 
 ---
 
-## Lab Title
+## Lab 5
 
-**Replace this with the lab title**
+To launch the app service run the following command in a codespace terminal. The service will then be available on port 8000
 
-Example:
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
 
-> Lab 1 — Creating a Basic FastAPI Application
+To launch the product serivce use the following command in a codespace terminal. The serivce will be available on port 8001
 
----
-## Repository Structure
+python -m uvicorn product_service.main:app --host 0.0.0.0 --port 8001
 
-Use the following structure for the labs:
-
-```text
-project-name/
-│
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── schemas.py
-│   ├── services.py
-│   └── models.py
-│
-├── tests/
-│   ├── __init__.py
-│   └── test_main.py
-│
-├── requirements.txt
-├── README.md
-└── .gitignore
+PRODUCT_SERVICE_URL provides the location of the product service.
 ```
